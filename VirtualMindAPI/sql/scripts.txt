@@ -1,0 +1,15 @@
+CREATE TABLE PurchaseOrders(
+    id int not null,
+    iso_code char(3)  NOT NULL,
+    buy_amount decimal(9,6)  NOT NULL,
+    exchange_rate decimal(9,6)  NOT NULL,
+    result_value decimal(9,6)  NOT NULL,
+    buy_date datetime not null
+);
+
+--query to get total amount purchase
+
+select sum(result_value) as result_value from purchaseorders
+where iso_code = &param1
+and buy_date >= &param2 and buy_date <= &param3
+and id = &param4
